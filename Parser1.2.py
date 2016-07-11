@@ -12,6 +12,11 @@ import re
 import codecs
 list_file = open("actors.list", "r")
 aActor = ''
+firstName = ''
+lastName = ''
+pref = ''
+pos = ''
+type = ''
 aLine = ''
 
 def bytesInFile(fileName, pieceSize=4096):
