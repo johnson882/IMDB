@@ -57,6 +57,8 @@ for b in bytesInFile('actors.list'):
             aActor = wList[0]
             print(aActor)
             tempName = aActor.split(',')
+            print("temp name:")
+            print( tempName)
 
             if len(tempName) > 1:
              firstName = tempName.pop()
@@ -65,6 +67,9 @@ for b in bytesInFile('actors.list'):
             # firstName.strip(' ')
              print("last name: " + lastName)
              print("first name: "+ firstName)
+            # if firstName.__contains__(")"):
+             if ")" in firstName:
+                 print("firstName ():" + firstName)
              pref = firstName.split('(')
              if len(pref) > 1:
                #thePref = pref.pop()
