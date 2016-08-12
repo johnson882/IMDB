@@ -63,8 +63,7 @@ for b in bytesInFile('actors.list'):
              lastName = tempName.pop()
 
 
-            # print("last name: " + lastName)
-             #print("first name: "+ firstName)
+
              pref = firstName.split('(')
              if len(pref) > 1:
                #thePref = pref.pop()
@@ -76,6 +75,7 @@ for b in bytesInFile('actors.list'):
                thePref = thePref.strip(')')
                print("the Preference:" + thePref)
 
+
             if len(tempName) > 0:
                 firstName = tempName.pop()
                 firstName.strip(' ')
@@ -83,6 +83,7 @@ for b in bytesInFile('actors.list'):
                 #print("pref:" + pref)
                 pref = firstName.split('(')
                 #print("first name: " + firstName)
+
                 if len(pref) > 1:
                     # thePref = pref.pop()
                     thePref = pref[1].strip()
@@ -90,6 +91,7 @@ for b in bytesInFile('actors.list'):
 
                     thePref = thePref.strip(')')
                 #    print(thePref)
+
                 else:
                     thePref="I"
 
