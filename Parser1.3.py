@@ -5,7 +5,7 @@ this list file contains the IMDB list of actors, and their roles in films and tv
 file into a delimiter file in rows of actorname|TVMovie|roleInMovieOrTV into dFile.txt which can be bulk loaded into sql
 '''
 # __author__ = 'Ian Johnson'
-# _date_ = '5/4/2015' Last update 8/11/2016
+# _date_ = '8/11/2015'
 # _email_ = 'johnson882@gmail.com'
 
 import re
@@ -62,16 +62,19 @@ for b in bytesInFile('actors.list'):
              firstName = tempName.pop()
              lastName = tempName.pop()
 
-            # firstName.strip(' ')
-             print("last name: " + lastName)
-             print("first name: "+ firstName)
+
+            # print("last name: " + lastName)
+             #print("first name: "+ firstName)
              pref = firstName.split('(')
              if len(pref) > 1:
                #thePref = pref.pop()
+
                thePref = pref[1].strip()
 
+               firstName = pref[0]
+              # print("first name: " + firstName)
                thePref = thePref.strip(')')
-               print(thePref)
+               print("the Preference:" + thePref)
 
             if len(tempName) > 0:
                 firstName = tempName.pop()
@@ -79,22 +82,28 @@ for b in bytesInFile('actors.list'):
                 pref = firstName.split('(')
                 #print("pref:" + pref)
                 pref = firstName.split('(')
+                #print("first name: " + firstName)
                 if len(pref) > 1:
                     # thePref = pref.pop()
                     thePref = pref[1].strip()
-
+                    firstName = pref[0]
 
                     thePref = thePref.strip(')')
-                    print(thePref)
+                #    print(thePref)
                 else:
                     thePref="I"
-        if len(wList) > 1:
-            chrRole = wList[1].split('[')
 
+
+        if len(wList) > 1:
+            print("last name:" + lastName)
+            print("first name:" + firstName)
+            chrRole = wList[1].split('[')
+            firstName = firstName.strip()
             if len(chrRole) > 1:
                 tempRole = chrRole[1]
                 role = tempRole.split(']')  # pulls out a the character role from the line
                 fOut.write(firstName + "|" + lastName  + "|" + thePref + "|" + chrRole[0].strip() + "|" + role[0] + "\r\n")
+
 
             if len(chrRole) < 1:
                 fOut.write(firstName + "|"+ lastName + "|" + thePref + "|" + chrRole[0].strip() + "|" + "\r\n")
@@ -109,6 +118,6 @@ for b in bytesInFile('actors.list'):
 
     if aLine == "Ð":
         break
-print("=====================file created===============================")
+print("=====================file  created===============================")
 fOut.close()
 list_file.close()
