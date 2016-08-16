@@ -58,6 +58,9 @@ for b in bytesInFile('actors.list'):
             print(aActor)
             tempName = aActor.split(',')
 
+
+
+
             if len(tempName) > 1:
              firstName = tempName.pop()
              lastName = tempName.pop()
@@ -65,6 +68,7 @@ for b in bytesInFile('actors.list'):
 
 
              pref = firstName.split('(')
+             print("pref:" + pref[0])
              if len(pref) > 1:
                #thePref = pref.pop()
 
@@ -101,14 +105,32 @@ for b in bytesInFile('actors.list'):
             print("first name:" + firstName)
             chrRole = wList[1].split('[')
             firstName = firstName.strip()
+
+            charTemp = chrRole[0].split('(');
+            title = charTemp[0]
+            print("title:" + title)
+            date = charTemp[1]
+            dateArray = date.split(')')
+            #date = date.strip()
+            #date = date.strip(')')
+            print("date:" + dateArray[0])
+            print("TheRest: " + dateArray[1])
+
+
+
             if len(chrRole) > 1:
                 tempRole = chrRole[1]
+
+
+
+
+
                 role = tempRole.split(']')  # pulls out a the character role from the line
-                fOut.write(firstName + "|" + lastName  + "|" + thePref + "|" + chrRole[0].strip() + "|" + role[0] + "\r\n")
+                fOut.write(firstName + "|" + lastName  + "|" + thePref + "|" + title.strip() + "|" + role[0] + "\r\n")
 
 
             if len(chrRole) < 1:
-                fOut.write(firstName + "|"+ lastName + "|" + thePref + "|" + chrRole[0].strip() + "|" + "\r\n")
+                fOut.write(firstName + "|"+ lastName + "|" + thePref + "|" + title[0].strip() + "|" + "\r\n")
                 #print(aActor + "|" + chrRole[0].strip() + "|" + "\r\n")
 
 
